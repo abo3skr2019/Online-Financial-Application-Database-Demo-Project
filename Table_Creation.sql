@@ -59,6 +59,14 @@ CREATE TABLE statements (
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
+CREATE TABLE statement_transactions (
+    statement_id INTEGER NOT NULL,
+    transaction_id INTEGER NOT NULL,
+    PRIMARY KEY (statement_id, transaction_id),
+    FOREIGN KEY (statement_id) REFERENCES statements(statement_id),
+    FOREIGN KEY (transaction_id) REFERENCES transactions(transaction_id)
+);
+
 CREATE TABLE feedbacks (
     feedback_id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER NOT NULL,
